@@ -9,7 +9,7 @@ def init_browser():
     return Browser("chrome", **executable_path, headless=False)
 
 # NASA Latest Mars News
-def scrape_news():
+def scrape():
 	browser = init_browser()
 
 	# Latest Mars News
@@ -18,7 +18,7 @@ def scrape_news():
 	html = browser.html
 	soup = bs(html, 'html.parser')
 
-	news_title = soup.find('div', class_='content_title').find('a').text
+	news_title = soup.find('div', class_='content_title')[1].a.text
 	news_p = soup.find('div', class_='article_teaser_body').text
 
 	mars_data = {
@@ -26,12 +26,9 @@ def scrape_news():
 		"news_p": news_p
 	}
 
-	browser.quit()
-
-	return mars_data
-
+	
 # Featured Image
-def scrape_image():
+
 	featured_image_url = "https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars"
 	browser.visit(featured_image_url)
 	image_html = browser.html
@@ -45,10 +42,10 @@ def scrape_image():
 
 	brower.quit()
 
-	return mars_data
+	
 
 # Mars Facts
-def scrape_facts():
+
 	mars_url = "https://space-facts.com/mars/"
 	browser.visit(mars_url)
 
@@ -63,10 +60,10 @@ def scrape_facts():
 
 	brower.quit()
 
-	return mars_data
+	
 
 # Mars Hemispheres
-def scrape_hemispheres():
+
 	hemispheres_url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
 	browser.visit(hemispheres_url)
 	hemisphere_html = browser.html
