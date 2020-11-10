@@ -13,16 +13,16 @@ mongo = PyMongo(app, uri="mongodb://localhost:27017/weather_app")
 @app.route("/")
 def home():
 	# Find one record of data from the mongo database
-    destination_data = mongo.db.collection.find_one()
+    planet_data = mongo.db.collection.find_one()
 
     # Return template and data
-    return render_template("index.html", vacation=destination_data)
+    return render_template("index.html", mars = planet_data)
 
 @app.route("/scrape")
 def scrape():
 
     # Run the scrape function
-    mars_data = scrape_mars.scrape_info()
+    mars_data = scrape_mars.scrape()
 
     # Update the Mongo database using update and upsert=True
     mongo.db.collection.update({}, mars_data, upsert=True)

@@ -27,8 +27,7 @@ def scrape():
 	}
 
 	
-# Featured Image
-
+	# Featured Image
 	featured_image_url = "https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars"
 	browser.visit(featured_image_url)
 	image_html = browser.html
@@ -40,12 +39,9 @@ def scrape():
 		"featured_image": featured_image_url
 	}
 
-	brower.quit()
-
 	
 
-# Mars Facts
-
+	# Mars Facts
 	mars_url = "https://space-facts.com/mars/"
 	browser.visit(mars_url)
 
@@ -57,12 +53,9 @@ def scrape():
 	mars_data = {
 		"mars_facts": html_table
 	}
-
-	brower.quit()
-
 	
 
-# Mars Hemispheres
+	# Mars Hemispheres
 
 	hemispheres_url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
 	browser.visit(hemispheres_url)
