@@ -4,13 +4,14 @@ import pandas as pd
 
 
 def init_browser():
-    # @NOTE: Replace the path with your actual path to the chromedriver
-    executable_path = {"executable_path": "chromedriver.exe"}
-    return Browser("chrome", **executable_path, headless=False)
+	# @NOTE: Replace the path with your actual path to the chromedriver
+	executable_path = {"executable_path": "chromedriver.exe"}
+	return Browser("chrome", **executable_path, headless=False)
 
-# NASA Latest Mars News
+	# NASA Latest Mars News
 def scrape():
 	browser = init_browser()
+	mars_data = {}
 
 	# Latest Mars News
 	url = "https://mars.nasa.gov/news/"
@@ -18,15 +19,10 @@ def scrape():
 	html = browser.html
 	soup = bs(html, 'html.parser')
 
-	news_title = soup.find('div', class_='content_title')[1].a.text
+	news_title = soup.find_all('div', class_='content_title')[1].find('a').text
 	news_p = soup.find('div', class_='article_teaser_body').text
 
-	mars_data = {
-		"news_title": news_title,
-		"news_p": news_p
-	}
 
-	
 	# Featured Image
 	featured_image_url = "https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars"
 	browser.visit(featured_image_url)
@@ -35,12 +31,7 @@ def scrape():
 
 	featured_image_url = f"https://www.jpl.nasa.gov{image_soup.find('div', class_='img').img['src']}"
 
-	mars_data = {
-		"featured_image": featured_image_url
-	}
-
 	
-
 	# Mars Facts
 	mars_url = "https://space-facts.com/mars/"
 	browser.visit(mars_url)
@@ -50,10 +41,6 @@ def scrape():
 	facts_df.columns = ['Description', 'Value']
 	html_table = facts_df.to_html()
 
-	mars_data = {
-		"mars_facts": html_table
-	}
-	
 
 	# Mars Hemispheres
 
@@ -92,12 +79,17 @@ def scrape():
 	        "title": title,
 	        'img_url': full_img
 	    })
-	mars_data = {
+	
+	mars_dict = {
+		"news_title": news_title,
+		"news_p": news_p,
+		"featured_image": featured_image_url,
+		"mars_facts": html_table,
 		"hemisphere_images": hemisphere_image_urls
 	}
-	
-	# Close the browser after scraping
-    browser.quit()
 
-    # Return results
-    return mars_data
+	# Close the browser after scraping
+	browser.quit()
+
+	# Return results
+	return mars_dict

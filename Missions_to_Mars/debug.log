@@ -3,3 +3,17 @@
 [1108/211822.314:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
 [1109/130117.208:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
 [1109/181610.159:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1111/201914.941:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[1111/201914.944:ERROR:exception_snapshot_win.cc(99)] thread ID 13872 not found in process
+[1111/201914.969:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[1111/201914.969:ERROR:exception_snapshot_win.cc(99)] thread ID 836 not found in process
+[1111/202310.249:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[1111/202310.251:ERROR:exception_snapshot_win.cc(99)] thread ID 22652 not found in process
+[1111/202310.298:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[1111/202310.299:ERROR:exception_snapshot_win.cc(99)] thread ID 22060 not found in process
+[1111/203025.445:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1111/203025.451:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1111/203025.451:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[1111/203025.459:ERROR:exception_snapshot_win.cc(99)] thread ID 20276 not found in process
+[1111/203025.549:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[1111/203025.551:ERROR:exception_snapshot_win.cc(99)] thread ID 22600 not found in process
